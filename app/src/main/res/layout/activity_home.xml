@@ -6,30 +6,40 @@
     android:background="@color/white"
     >
 
-    <!-- Logo ở đầu màn hình -->
+
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="140dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
+        android:background="#FF9800"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logonew" />
 
-    <!-- RecyclerView chiếm phần còn lại bên dưới -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="394dp"
-        android:layout_height="622dp"
+        android:layout_width="match_parent"
+        android:layout_height="654dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613"
+        app:layout_constraintVertical_bias="0.625"
         tools:ignore="SpeakableTextPresentCheck"
         tools:listitem="@layout/item_category" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+
+        android:layout_height="49dp"
+        android:background="#FF9800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
