@@ -11,7 +11,8 @@ import java.io.IOException;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.prm392_su25.Activity.Home.HomeActivity;
+
+import com.example.prm392_su25.Activity.Main.MainActivity;
 import com.example.prm392_su25.Activity.Register.RegisterActivity;
 import com.example.prm392_su25.Interface.ApiService;
 import com.example.prm392_su25.Model.Login.LoginRequest;
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                     String token = response.body().getResult().getToken();
                     TokenManager.saveToken(LoginActivity.this, token);
                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công! " , Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish(); // để không quay lại login nữa
                 } else {

@@ -14,7 +14,9 @@ import com.example.prm392_su25.Model.Home.Product;
 import com.example.prm392_su25.R;
 import com.example.prm392_su25.ViewHolder.Home.ProductViewHolder;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     private Context context;
@@ -36,7 +38,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
         holder.tvProductName.setText(product.getProductName());
-        holder.tvPrice.setText(product.getPrice() + " VNĐ");
+        int price = product.getPrice();
+        NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
+        String formattedPrice = numberFormat.format(price);
+
+        holder.tvPrice.setText(formattedPrice + " VNĐ");
         Glide.with(context)
                 .load(product.getImageURL())
                 .placeholder(R.drawable.placeholder)

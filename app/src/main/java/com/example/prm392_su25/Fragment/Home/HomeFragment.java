@@ -1,10 +1,15 @@
-package com.example.prm392_su25.Activity.Home;
+package com.example.prm392_su25.Fragment.Home;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,23 +29,30 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private CategoryAdapter categoryAdapter;
     private List<CategoryWithProducts> categoryWithProductsList = new ArrayList<>();
     private ApiService apiService;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+    public HomeFragment() {
+        // Required empty public constructor
+    }
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_home, container, false);  // dùng layout fragment_home.xml bạn đã tách
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         apiService = RetrofitClient.getClient().create(ApiService.class);
 
         fetchCategories();
+
+        return view;
     }
 
     private void fetchCategories() {
@@ -53,13 +65,13 @@ public class HomeActivity extends AppCompatActivity {
                         fetchProductsByCategory(category);
                     }
                 } else {
-                    Toast.makeText(HomeActivity.this, "Lỗi khi tải danh mục", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Lỗi khi tải danh mục", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ApiResponse<List<Category>>> call, Throwable t) {
-                Toast.makeText(HomeActivity.this, "Không kết nối được server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Không kết nối được server", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -71,10 +83,8 @@ public class HomeActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess) {
                     List<Product> products = response.body().result;
 
-
                     CategoryWithProducts combined = new CategoryWithProducts(category, products);
                     categoryWithProductsList.add(combined);
-
 
                     updateRecyclerView();
                 }
@@ -82,14 +92,14 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ApiResponse<List<Product>>> call, Throwable t) {
-                Log.e("HomeActivity", "Lỗi khi tải sản phẩm của category " + category.getCategoryID(), t);
+                Log.e("HomeFragment", "Lỗi khi tải sản phẩm của category " + category.getCategoryID(), t);
             }
         });
     }
 
     private void updateRecyclerView() {
         if (categoryAdapter == null) {
-            categoryAdapter = new CategoryAdapter(this, categoryWithProductsList);
+            categoryAdapter = new CategoryAdapter(getContext(), categoryWithProductsList);
             recyclerView.setAdapter(categoryAdapter);
         } else {
             categoryAdapter.notifyDataSetChanged();
