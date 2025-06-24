@@ -71,11 +71,11 @@ public class HomeActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess) {
                     List<Product> products = response.body().result;
 
-                    // Gộp thành 1 đối tượng chứa cả category và products
+
                     CategoryWithProducts combined = new CategoryWithProducts(category, products);
                     categoryWithProductsList.add(combined);
 
-                    // Sau mỗi lần lấy xong 1 category => cập nhật adapter
+
                     updateRecyclerView();
                 }
             }

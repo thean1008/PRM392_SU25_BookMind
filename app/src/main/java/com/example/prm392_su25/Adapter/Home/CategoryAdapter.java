@@ -36,7 +36,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
         CategoryWithProducts item = categoryList.get(position);
         holder.tvCategoryName.setText(item.getCategory().getCategoryName());
 
-        // Gán RecyclerView ngang cho từng category
+
         ProductAdapter productAdapter = new ProductAdapter(context, item.getProducts());
         holder.rvProduct.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.rvProduct.setAdapter(productAdapter);
