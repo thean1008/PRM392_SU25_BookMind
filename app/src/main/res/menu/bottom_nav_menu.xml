@@ -12,9 +12,9 @@
         android:icon="@drawable/book"
         android:title="Sách" />
     <item
-        android:id="@+id/nav_cart"
-        android:icon="@drawable/cart"
-        android:title="Giỏ hàng" />
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/chat"
+        android:title="Chat" />
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/person"

@@ -10,13 +10,16 @@
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="match_parent"
-        android:layout_height="81dp"
+        android:layout_height="65dp"
         android:background="#FF9800"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logonew" />
+
+    <!-- Nếu muốn load mặc định -->
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
@@ -25,9 +28,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView12" /> <!-- Nếu muốn load mặc định -->
-
+        app:layout_constraintTop_toBottomOf="@id/imageView12"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -41,18 +45,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
+
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
+        android:id="@+id/iMMore"
+        android:layout_width="44dp"
+        android:layout_height="48dp"
         android:background="#FF9800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@drawable/more"
+        app:layout_constraintVertical_bias="0.01"
+        app:srcCompat="@drawable/more2"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/iMCart"
+        android:layout_width="44dp"
+        android:layout_height="48dp"
+        android:background="#FF9800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:srcCompat="@drawable/cart"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
