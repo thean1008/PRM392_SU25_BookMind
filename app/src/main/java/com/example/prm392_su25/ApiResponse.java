@@ -8,4 +8,7 @@ public class ApiResponse<T> {
     public boolean isSuccess;
     public List<String> errorMessages;
     public T result;
+    public T getResult() {
+        return result;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.prm392_su25.Interface;
 import com.example.prm392_su25.ApiResponse;
+import com.example.prm392_su25.Model.Book.Book;
 import com.example.prm392_su25.Model.Home.Category;
 import com.example.prm392_su25.Model.Home.Product;
 import com.example.prm392_su25.Model.Login.LoginRequest;
@@ -24,6 +25,10 @@ public interface ApiService {
     Call<ApiResponse<List<Category>>> getAllCategories();
     @GET("Product/category/{id}")
     Call<ApiResponse<List<Product>>> getProductsByCategory(@Path("id") int categoryId);
+    @GET("Product")
+    Call<ApiResponse<List<Book>>> getBooks();
+    @GET("Product/{id}")
+    Call<ApiResponse<Book>> getProductById(@Path("id") int id);
 
     static ApiService api = RetrofitClient.getClient().create(ApiService.class);
 }
