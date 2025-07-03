@@ -18,7 +18,7 @@ import com.example.prm392_su25.Interface.ApiService;
 import com.example.prm392_su25.Model.Login.LoginRequest;
 import com.example.prm392_su25.Model.Login.LoginResponse;
 import com.example.prm392_su25.R;
-import com.example.prm392_su25.RetrofitClient;
+import com.example.prm392_su25.Interface.RetrofitClient;
 import com.example.prm392_su25.TokenManager;
 
 import retrofit2.Call;

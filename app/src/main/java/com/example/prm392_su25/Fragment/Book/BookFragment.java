@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prm392_su25.Adapter.Book.BookAdapter;
-import com.example.prm392_su25.ApiResponse;
+import com.example.prm392_su25.Interface.ApiResponse;
 import com.example.prm392_su25.Interface.ApiService;
 import com.example.prm392_su25.Model.Book.Book;
 import com.example.prm392_su25.R;

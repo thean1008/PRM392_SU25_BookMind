@@ -1,5 +1,5 @@
 // ApiResponse.java
-package com.example.prm392_su25;
+package com.example.prm392_su25.Interface;
 
 import java.util.List;
 

@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prm392_su25.R;
-import com.example.prm392_su25.RetrofitClient;
+import com.example.prm392_su25.Interface.RetrofitClient;
 import com.example.prm392_su25.Adapter.Home.CategoryAdapter;
 import com.example.prm392_su25.Interface.ApiService;
-import com.example.prm392_su25.ApiResponse;
+import com.example.prm392_su25.Interface.ApiResponse;
 import com.example.prm392_su25.Model.Home.Category;
 import com.example.prm392_su25.Model.Home.CategoryWithProducts;
 import com.example.prm392_su25.Model.Home.Product;

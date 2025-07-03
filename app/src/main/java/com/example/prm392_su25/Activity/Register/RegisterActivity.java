@@ -19,7 +19,7 @@ import com.example.prm392_su25.Activity.Login.LoginActivity;
 import com.example.prm392_su25.Interface.ApiService;
 import com.example.prm392_su25.Model.Register.Register;
 import com.example.prm392_su25.R;
-import com.example.prm392_su25.RetrofitClient;
+import com.example.prm392_su25.Interface.RetrofitClient;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

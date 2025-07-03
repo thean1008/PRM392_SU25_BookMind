@@ -1,4 +1,7 @@
-package com.example.prm392_su25;
+package com.example.prm392_su25.Interface;
+
+import com.example.prm392_su25.MyApplication;
+import com.example.prm392_su25.TokenManager;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -15,7 +18,7 @@ public class RetrofitClient {
                     .addInterceptor(chain -> {
                         Request original = chain.request();
 
-                        // 🔐 Lấy token từ SharedPreferences thông qua context toàn cục
+
                         String token = TokenManager.getToken(MyApplication.getAppContext());
 
                         Request.Builder builder = original.newBuilder()

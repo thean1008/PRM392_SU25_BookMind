@@ -1,60 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@color/white">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <!-- Scrollable content -->
+    <ImageButton
+        android:id="@+id/iMCart"
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        app:srcCompat="@drawable/cart2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/imgProduct"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="363dp"
-            android:scaleType="centerCrop" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/txtName"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="match_parent"
+                android:layout_height="363dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtBrief"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:textSize="16sp"
+                android:textColor="#FF5722"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtFullDescription"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtTechSpec"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:textColor="#555"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/btnDecrease"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/purple_500"
+            android:text="-"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:background="@drawable/quantity_background"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/edtQuantity"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/quantity_background"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="1"
             android:textColor="@color/black"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/txtBrief"
             android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            tools:ignore="TouchTargetSizeCheck" />
 
-        <TextView
-            android:id="@+id/txtPrice"
-            android:textSize="16sp"
-            android:textColor="#FF5722"
-            android:layout_marginTop="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnIncrease"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/purple_500"
+            android:text="+"
+            android:background="@drawable/quantity_background"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
 
-        <TextView
-            android:id="@+id/txtFullDescription"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/txtTechSpec"
-            android:layout_marginTop="8dp"
-            android:textSize="14sp"
-            android:textColor="#555"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </LinearLayout>
-</ScrollView>
+
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:text="Add to Cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:background="@drawable/add_to_cart"
+        android:layout_margin="16dp"/>
+</LinearLayout>
