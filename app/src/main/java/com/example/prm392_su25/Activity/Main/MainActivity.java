@@ -16,6 +16,7 @@ import com.example.prm392_su25.Fragment.Book.BookFragment;
 import com.example.prm392_su25.Fragment.Home.HomeFragment;
 import com.example.prm392_su25.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.prm392_su25.Fragment.Profile.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             else if (item.getItemId() == R.id.nav_book) {
                   selectedFragment = new BookFragment();
+            }
+            else if (item.getItemId() == R.id.nav_profile) {
+                selectedFragment = new ProfileFragment();
             }
 //             else if (item.getItemId() == R.id.nav_product) {
 //                selectedFragment = new ProductFragment();
