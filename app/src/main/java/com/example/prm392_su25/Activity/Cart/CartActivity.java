@@ -1,5 +1,6 @@
 package com.example.prm392_su25.Activity.Cart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prm392_su25.Activity.Checkout.CheckoutActivity;
 import com.example.prm392_su25.Adapter.Cart.CartAdapter;
 import com.example.prm392_su25.Interface.ApiService;
 import com.example.prm392_su25.Interface.RetrofitClient;
@@ -29,7 +31,7 @@ public class CartActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private TextView txtTotalPrice;
-    private Button btnClearCart;
+    private Button btnClearCart, btnCheckout;
 
     private CartAdapter cartAdapter;
     private ApiService apiService;
@@ -38,7 +40,7 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-
+        btnCheckout=findViewById(R.id.btnCheckout);
         recyclerView = findViewById(R.id.recyclerCart);
         txtTotalPrice = findViewById(R.id.txtTotalPrice);
         btnClearCart = findViewById(R.id.btnClearCart);
@@ -46,7 +48,16 @@ public class CartActivity extends AppCompatActivity {
         apiService = RetrofitClient.getClient().create(ApiService.class);
 
         loadCart();
-
+        btnCheckout.setOnClickListener(view -> {
+            // Kiểm tra giỏ hàng không rỗng
+            if (cartAdapter != null && cartAdapter.getItemCount() > 0) {
+                Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
+                intent.putExtra("totalPrice", txtTotalPrice.getText().toString());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Giỏ hàng trống!", Toast.LENGTH_SHORT).show();
+            }
+        });
         btnClearCart.setOnClickListener(view -> clearCart());
     }
 

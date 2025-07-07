@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
         String fullName = username;
         String dateOfBirth = "2000-06-20T05:42:26.852Z";
         String imageUrl = "string";
-        String role = "string";
+        String role = "customer";
         Register request = new Register(fullName, username, phoneNumber, email,
                 address, dateOfBirth, imageUrl, role, password);
 

@@ -90,6 +90,7 @@ public class BookDetailActivity extends AppCompatActivity {
         txtName = findViewById(R.id.txtName);
         txtBrief = findViewById(R.id.txtBrief);
         txtPrice = findViewById(R.id.txtPrice);
+
         txtFullDescription = findViewById(R.id.txtFullDescription);
         txtTechSpec = findViewById(R.id.txtTechSpec);
         imgProduct = findViewById(R.id.imgProduct);

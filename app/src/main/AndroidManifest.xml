@@ -17,7 +17,15 @@
         android:theme="@style/Theme.PRM392_SU25"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activity.PaymentSuccess.PaymentSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Checkout.WebviewPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Checkout.CheckoutActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.Cart.CartActivity"
             android:exported="false" />
@@ -35,6 +43,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

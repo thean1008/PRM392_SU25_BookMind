@@ -16,7 +16,9 @@ import com.example.prm392_su25.Model.Cart.CartItem;
 import com.example.prm392_su25.R;
 import com.example.prm392_su25.ViewHolder.Cart.CartItemViewHolder;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Callback;
 
@@ -52,7 +54,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartItemViewHolder> {
         CartItem item = cartItems.get(position);
 
         holder.txtProductName.setText(item.getProductName());
-        holder.txtPrice.setText(item.getPrice() + " VND");
+        int price = item.getPrice();
+        NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
+        String formattedPrice = numberFormat.format(price);
+
+        holder.txtPrice.setText(formattedPrice + " VNĐ");
         holder.txtQuantity.setText(String.valueOf(item.getQuantity()));
 
         Glide.with(context)

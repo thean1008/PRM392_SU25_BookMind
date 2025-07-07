@@ -14,7 +14,9 @@ import com.example.prm392_su25.Model.Book.Book;
 import com.example.prm392_su25.R;
 import com.example.prm392_su25.ViewHolder.Book.BookViewHolder;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class BookAdapter extends RecyclerView.Adapter<BookViewHolder> {
 
@@ -37,7 +39,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookViewHolder> {
         Book book = books.get(position);
         holder.name.setText(book.getProductName());
         holder.brief.setText(book.getBriefDescription());
-        holder.price.setText(String.format("%,d đ", book.getPrice()));
+        int price = book.getPrice();
+        NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
+        String formattedPrice = numberFormat.format(price);
+
+        holder.price.setText(formattedPrice + " VNĐ");
 
         Glide.with(holder.itemView.getContext())
                 .load(book.getImageURL())

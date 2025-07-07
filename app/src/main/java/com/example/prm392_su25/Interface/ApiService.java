@@ -7,6 +7,9 @@ import com.example.prm392_su25.Model.Home.Category;
 import com.example.prm392_su25.Model.Home.Product;
 import com.example.prm392_su25.Model.Login.LoginRequest;
 import com.example.prm392_su25.Model.Login.LoginResponse;
+import com.example.prm392_su25.Model.Order.OrderRequest;
+import com.example.prm392_su25.Model.Order.OrderResult;
+import com.example.prm392_su25.Model.Payment.PaymentRequest;
 import com.example.prm392_su25.Model.Profile.Profile;
 import com.example.prm392_su25.Model.Register.Register;
 
@@ -43,12 +46,14 @@ public interface ApiService {
     Call<ApiResponse<String>> removeItem(@Path("productId") int productId);
     @DELETE("Cart/clear")
     Call<ApiResponse<String>> clearCart();
-
     @GET("Auth/profile")
     Call<ApiResponse<Profile>> getProfile();
-
     @PUT("Auth/profile")
     Call<ApiResponse<String>> updateProfile(@Body Profile profile);
+    @POST("Order")
+    Call<ApiResponse<OrderResult>> createOrder(@Body OrderRequest request);
+    @POST("payment/process")
+    Call<ApiResponse<String>> processPayment(@Body PaymentRequest request);
 
     static ApiService api = RetrofitClient.getClient().create(ApiService.class);
 
