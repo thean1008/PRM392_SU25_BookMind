@@ -55,6 +55,30 @@ public interface ApiService {
     @POST("payment/process")
     Call<ApiResponse<String>> processPayment(@Body PaymentRequest request);
 
+    // --- CATEGORY ---
+
+    @POST("Category")
+    Call<ApiResponse<Category>> createCategory(@Body Category category);
+
+    @PUT("Category")
+    Call<ApiResponse<Category>> updateCategory(@Body Category category);
+
+    @DELETE("Category/{id}")
+    Call<ApiResponse<Void>> deleteCategory(@Path("id") int id);
+
+
+    // --- PRODUCT ---
+    @POST("Product")
+    Call<ApiResponse<Book>> createProduct(@Body Book book);
+
+    @PUT("Product")
+    Call<ApiResponse<Book>> updateProduct(@Body Book book);
+
+    @DELETE("Product/{id}")
+    Call<ApiResponse<Void>> deleteProduct(@Path("id") int productId);
+    @GET("Product/search")
+    Call<ApiResponse<List<Book>>> searchProducts(@retrofit2.http.Query("name") String name);
+
     static ApiService api = RetrofitClient.getClient().create(ApiService.class);
 
 }

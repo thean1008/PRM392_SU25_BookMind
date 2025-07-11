@@ -52,6 +52,9 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.PRM392_SU25" />
+        <activity
+            android:name=".Activity.Staff.StaffMainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

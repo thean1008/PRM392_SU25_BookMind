@@ -11,4 +11,16 @@ public class Category {
     public String getCategoryName() {
         return categoryName;
     }
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    @Override
+    public String toString() {
+        return categoryName;
+    }
 }

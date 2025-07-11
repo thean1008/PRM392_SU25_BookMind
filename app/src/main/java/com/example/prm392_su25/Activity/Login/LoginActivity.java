@@ -11,8 +11,8 @@ import java.io.IOException;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.example.prm392_su25.Activity.Main.MainActivity;
+import com.example.prm392_su25.Activity.Staff.StaffMainActivity;
 import com.example.prm392_su25.Activity.Register.RegisterActivity;
 import com.example.prm392_su25.Interface.ApiService;
 import com.example.prm392_su25.Model.Login.LoginRequest;
@@ -69,11 +69,31 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                     String token = response.body().getResult().getToken();
+                    String role = response.body().getResult().getRole();
+
+                    if (token == null || role == null) {
+                        Toast.makeText(LoginActivity.this, "Phản hồi không hợp lệ từ server.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    Log.d("Login", "Token: " + token);
+                    Log.d("Login", "Role: " + role);
+
                     TokenManager.saveToken(LoginActivity.this, token);
-                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công! " , Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
+                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công! Role: " + role, Toast.LENGTH_SHORT).show();
+
+                    Intent intent;
+                    if ("Staff".equalsIgnoreCase(role)) {
+                        intent = new Intent(LoginActivity.this, StaffMainActivity.class);
+                    } else {
+                        intent = new Intent(LoginActivity.this, MainActivity.class);
+                    }
+
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                    finish(); // để không quay lại login nữa
+                    finish();
+
                 } else {
                     Log.e("Login", "HTTP Code: " + response.code());
 
@@ -84,7 +104,6 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     } else if (response.body() != null && !response.body().isSuccess()) {
-                        // Server trả 200 nhưng login thất bại
                         Toast.makeText(LoginActivity.this, "Sai thông tin đăng nhập.", Toast.LENGTH_SHORT).show();
                         Log.e("Login", "Login thất bại: isSuccess = false");
                     } else {
@@ -93,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
             }
-
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {

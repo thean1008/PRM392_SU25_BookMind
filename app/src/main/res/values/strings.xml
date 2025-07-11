@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">PRM392_SU25</string>
+
+    <!-- Staff Category -->
+    <string name="category_name_label">Tên danh mục</string>
+    <string name="edit">Sửa</string>
+    <string name="delete">Xóa</string>
+    <string name="add_category">Thêm danh mục</string>
+    <string name="btn_add_category">Thêm</string>
+    <string name="btn_update_category">Cập nhật</string>
+    <string name="category_list_empty">Danh sách trống.</string>
+    <string name="category_load_failed">Tải danh sách thất bại.</string>
+    <string name="category_add_failed">Thêm mới thất bại.</string>
+    <string name="category_update_failed">Cập nhật thất bại.</string>
+    <string name="category_delete_failed">Xóa thất bại.</string>
+    <string name="category_add_success">Thêm mới thành công.</string>
+    <string name="category_update_success">Cập nhật thành công.</string>
+    <string name="category_delete_success">Xóa thành công.</string>
+    <string name="category_name_empty">Tên danh mục không được để trống.</string>
+    <string name="category_update_not_found">Không tìm thấy danh mục để cập nhật.</string>
+    <string name="product_price_format">%1$d VNĐ</string>
+    <string name="book_image">Book image</string>
+
+
 </resources>
