@@ -20,6 +20,8 @@
     <string name="category_update_not_found">Không tìm thấy danh mục để cập nhật.</string>
     <string name="product_price_format">%1$d VNĐ</string>
     <string name="book_image">Book image</string>
+    <string name="map_title">Vị trí cửa hàng</string>
+
 
 
 </resources>
