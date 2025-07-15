@@ -2,6 +2,7 @@ package com.example.prm392_su25.Fragment.Staff;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import com.example.prm392_su25.Interface.ApiService;
 import com.example.prm392_su25.Interface.RetrofitClient;
 import com.example.prm392_su25.Model.Book.Book;
 import com.example.prm392_su25.Model.Home.Category;
+import com.example.prm392_su25.Network.CloudinaryUploader;
 import com.example.prm392_su25.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -50,11 +52,14 @@ public class StaffProductFragment extends Fragment {
     private List<Book> products;
 
     private Uri selectedImageUri = null;
+    private String uploadedImageUrl = null;
+
     private List<Category> categoryList = new ArrayList<>();
     private Spinner spinnerCategory;
     private ImageView imgPreview;
 
     private final Map<Integer, String> categoryMap = new HashMap<>();
+    private ProgressDialog progressDialog;
 
     @Nullable
     @Override
@@ -95,7 +100,6 @@ public class StaffProductFragment extends Fragment {
             return true;
         });
 
-        // Load categories first, then load products
         loadCategories(null, null);
 
         return view;
@@ -222,6 +226,7 @@ public class StaffProductFragment extends Fragment {
 
     private void showAddOrEditDialog(@Nullable Book editingBook) {
         selectedImageUri = null;
+        uploadedImageUrl = null;
 
         LayoutInflater inflater = LayoutInflater.from(requireContext());
         View view = inflater.inflate(R.layout.dialog_add_product, null);
@@ -257,6 +262,11 @@ public class StaffProductFragment extends Fragment {
                 .setTitle(editingBook == null ? "Thêm sách" : "Sửa sách")
                 .setView(view)
                 .setPositiveButton(editingBook == null ? "Thêm" : "Cập nhật", (dialog, which) -> {
+                    if (selectedImageUri != null && uploadedImageUrl == null) {
+                        showMessage("Vui lòng chờ upload ảnh xong!");
+                        return;
+                    }
+
                     Book book = editingBook != null ? editingBook : new Book();
 
                     book.setProductName(edtProductName.getText().toString().trim());
@@ -275,8 +285,8 @@ public class StaffProductFragment extends Fragment {
                     }
                     book.setPrice(price);
 
-                    if (selectedImageUri != null) {
-                        book.setImageURL(selectedImageUri.toString());
+                    if (uploadedImageUrl != null) {
+                        book.setImageURL(uploadedImageUrl);
                     } else if (editingBook != null) {
                         book.setImageURL(editingBook.getImageURL());
                     } else {
@@ -314,6 +324,41 @@ public class StaffProductFragment extends Fragment {
             if (imgPreview != null) {
                 imgPreview.setImageURI(selectedImageUri);
             }
+
+            showLoading("Đang upload ảnh...");
+            CloudinaryUploader.uploadImage(requireContext(), selectedImageUri, new CloudinaryUploader.UploadCallback() {
+                @Override
+                public void onSuccess(String imageUrl) {
+                    uploadedImageUrl = imageUrl;
+                    requireActivity().runOnUiThread(() -> {
+                        hideLoading();
+                        showMessage("Upload Cloudinary thành công!");
+                    });
+                }
+
+                @Override
+                public void onFailure(String error) {
+                    requireActivity().runOnUiThread(() -> {
+                        hideLoading();
+                        showMessage("Upload thất bại: " + error);
+                    });
+                }
+            });
+        }
+    }
+
+    private void showLoading(String message) {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(requireContext());
+            progressDialog.setCancelable(false);
+        }
+        progressDialog.setMessage(message);
+        progressDialog.show();
+    }
+
+    private void hideLoading() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
         }
     }
 

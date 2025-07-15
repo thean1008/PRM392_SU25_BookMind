@@ -53,6 +53,9 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
     implementation ("com.google.android.material:material:1.12.0")
 
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("com.cloudinary:cloudinary-android:2.3.1")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
