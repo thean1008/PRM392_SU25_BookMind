@@ -9,6 +9,7 @@ import com.example.prm392_su25.Model.Login.LoginRequest;
 import com.example.prm392_su25.Model.Login.LoginResponse;
 import com.example.prm392_su25.Model.Order.OrderRequest;
 import com.example.prm392_su25.Model.Order.OrderResult;
+import com.example.prm392_su25.Model.Payment.PaymentHistory;
 import com.example.prm392_su25.Model.Payment.PaymentRequest;
 import com.example.prm392_su25.Model.Profile.Profile;
 import com.example.prm392_su25.Model.Register.Register;
@@ -78,6 +79,9 @@ public interface ApiService {
     Call<ApiResponse<Void>> deleteProduct(@Path("id") int productId);
     @GET("Product/search")
     Call<ApiResponse<List<Book>>> searchProducts(@retrofit2.http.Query("name") String name);
+
+    @GET("payment/history")
+    Call<ApiResponse<List<PaymentHistory>>> getPaymentHistory();
 
     static ApiService api = RetrofitClient.getClient().create(ApiService.class);
 

@@ -47,6 +47,7 @@ public class BookDetailActivity extends AppCompatActivity {
         btnIncrease = findViewById(R.id.btnIncrease);
         btnDecrease = findViewById(R.id.btnDecrease);
         edtQuantity = findViewById(R.id.edtQuantity);
+
         btnCart =findViewById(R.id.iMCart);
         btnCart.setOnClickListener(v -> {
             Intent intent = new Intent(BookDetailActivity.this, CartActivity.class);

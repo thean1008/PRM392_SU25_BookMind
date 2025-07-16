@@ -13,7 +13,7 @@
         android:background="@color/white">
 
         <ImageView
-            android:id="@+id/imgProduct"
+            android:id="@+id/imgProductCartItem"
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop" />

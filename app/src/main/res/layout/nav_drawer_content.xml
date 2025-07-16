@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Tiêu đề bản đồ -->
     <TextView
         android:id="@+id/tvMapTitle"
         android:layout_width="wrap_content"
@@ -14,16 +15,35 @@
         android:textSize="16sp"
         android:layout_marginBottom="8dp" />
 
+    <!-- WebView bản đồ -->
     <WebView
         android:id="@+id/webViewMap"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scrollbars="none" />
 
+    <!-- Nút chỉ đường -->
     <Button
         android:id="@+id/btnDirections"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chỉ đường"
         android:layout_marginTop="16dp"/>
+
+    <!-- ✅ Nút Lịch sử giao dịch -->
+    <Button
+        android:id="@+id/btnTransactionHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lịch sử giao dịch"
+        android:layout_marginTop="16dp" />
+
+    <!-- ✅ Nút Đăng xuất -->
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng xuất"
+        android:layout_marginTop="8dp" />
+
 </LinearLayout>

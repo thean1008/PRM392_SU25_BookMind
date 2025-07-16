@@ -14,6 +14,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.prm392_su25.Activity.Cart.CartActivity;
+import com.example.prm392_su25.Activity.Login.LoginActivity;
+import com.example.prm392_su25.Activity.PaymentHistory.PaymentHistoryActivity;
 import com.example.prm392_su25.Fragment.Book.BookFragment;
 import com.example.prm392_su25.Fragment.Home.HomeFragment;
 import com.example.prm392_su25.Fragment.Profile.ProfileFragment;
@@ -79,6 +81,28 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         }
+        // Xử lý nút Lịch sử giao dịch
+        Button btnTransactionHistory = navigationView.findViewById(R.id.btnTransactionHistory);
+        if (btnTransactionHistory != null) {
+            btnTransactionHistory.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, PaymentHistoryActivity.class);
+                startActivity(intent);
+            });
+        }
+
+// Xử lý nút Đăng xuất
+        Button btnLogout = navigationView.findViewById(R.id.btnLogout);
+        if (btnLogout != null) {
+            btnLogout.setOnClickListener(v -> {
+
+                Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            });
+        }
+
 
 
         // Xử lý Bottom Navigation
